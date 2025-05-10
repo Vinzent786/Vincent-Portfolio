@@ -45,9 +45,6 @@ export default function App() {
     {
       path: '/error',
       element: <Error />
-    },
-    {
-      basename: '/Vincent-Portfolio'
     }
   ]);
 
