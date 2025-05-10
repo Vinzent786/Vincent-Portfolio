@@ -9,7 +9,7 @@ import Test from "./AppLayout/Test.jsx";
 const Home = lazy(() => import("./Home.jsx"));
 const About = lazy(() => import("./AppLayout/About.jsx"));
 const Exp = lazy(() => import("./AppLayout/Exp.jsx"));
-const Skills = lazy(() => import("./AppLayout/skills.jsx"));
+const Skills = lazy(() => import("./AppLayout/Skills.jsx"));
 
 export default function App() {
   // Client side routing
