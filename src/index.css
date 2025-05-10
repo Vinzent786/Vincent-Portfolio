@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    /* color-scheme: light dark; */
+  }
+
+  #layout, #layout *:not(a) {
+    transition: background-color ease-in-out 300ms, color ease-in-out 300ms;
+  }
+
+  h1 {
+    @apply text-4xl font-bold text-header-light dark:text-header-dark sm-max:text-2xl;
+  }
+
+  h2 {
+    @apply text-2xl font-bold text-header-light dark:text-header-dark;    
+  }
+
+  p {
+    @apply text-lg m-0 text-text-primary-light dark:text-text-primary-dark sm-max:text-sm;
+  }
+
+  li {
+    @apply py-1;
+  }
+}
+
+@layer components {
+  .animate-nav-link, .animate-hover-trigger {
+    @apply relative cursor-pointer font-josefinSans text-nav-link-light dark:text-nav-link-dark;
+  }
+
+  nav .animate-nav-link {
+    @apply text-header-light dark:text-header-dark
+  }
+
+  .animate-nav-link:hover, .animate-hover-trigger,  nav a.active {
+    @apply text-nav-link-hover-light dark:text-nav-link-hover-dark;
+  }
+
+  .animate-nav-link::after {
+    @apply 
+      absolute left-0 bottom-[-3px]
+      content-['']
+      h-[2px] w-0
+      bg-nav-link-hover-light
+      dark:bg-nav-link-hover-dark
+      transition-all duration-200
+      motion-reduce:transition-none;
+  }
+
+
+  .animate-nav-link:hover::after, .animate-hover-trigger::after {
+    @apply w-full;
+  }
+
+  .active-nav-link {
+    @apply 
+      text-nav-link-hover-light
+      dark:text-nav-link-hover-dark
+      font-josefinSans
+      underline 
+      underline-offset-[6px];
+  }
+
+  .animate-link {
+    @apply
+      relative
+      overflow-hidden
+      inline-block
+      align-middle
+      z-0
+      font-josefinSans
+      text-nav-link-light
+      dark:text-nav-link-dark;
+  }
+
+  .animate-link:hover {
+    @apply text-white;
+  }
+
+  .animate-link::after {
+    @apply
+      content-['']
+      absolute
+      bg-bg-animate-link
+      w-full
+      h-full
+      left-[-100%]
+      bottom-0
+      -z-10
+      transition-all;
+  }
+
+  .animate-link:hover::after {
+    @apply left-0;
+  }
+
+  div:has(#exp-container) {
+    @apply sm-max:p-0;
+  }
+
+  #exp-container article {
+    @apply 
+      relative
+      border border-[text-secondary-dark] 
+      bg-bg-secondary-light
+      dark:bg-bg-secondary-dark
+      text-lg
+      p-4
+      rounded-md
+      flex flex-col gap-4
+      shadow-article-shadow-light
+      dark:shadow-article-shadow-dark
+      transition-shadow
+      border-border-light
+      dark:border-border-dark
+      sm-max:rounded-none
+      sm-max:border-l-0 sm-max:border-r-0;
+  }
+
+  #exp-container article:hover {
+    @apply shadow-none;
+  }
+
+  #exp-container article > div {
+    @apply
+      absolute
+      inset-0
+    bg-black
+      bg-opacity-15
+      dark:bg-opacity-55
+      bg-center bg-contain bg-no-repeat bg-blend-overlay
+      transition-opacity;
+  }
+
+  #exp-container article:hover > div,
+  #exp-container article:focus > div {
+    opacity: 0;
+  }
+
+  #exp-container article:first-of-type > div {
+    @apply bg-[url('/assets/front-end-dev.png')];
+  }
+
+  #exp-container article:nth-of-type(2) > div {
+    @apply bg-[url('/assets/back-end-dev.png')];
+  }
+
+  #exp-container article:nth-of-type(3) > div {
+    @apply bg-[url('/assets/system-admin.png')];
+  }
+
+  #exp-container h2 {
+    @apply 
+      text-2xl 
+      mx-auto
+      z-50
+      transition-all;
+  }
+
+  #exp-container article:hover h2 {
+    @apply mx-0;
+  }
+
+  #exp-container article > ul {
+    @apply opacity-0 transition-opacity;
+  }
+
+  #exp-container article:hover > ul {
+    @apply opacity-100;
+  }
+
+  #exp-container li::before {
+    content: "- ";
+  }
+
+  #projects-container {
+    @apply flex flex-col gap-1 justify-center align-middle w-full;
+  }
+}
+
+@layer utilities {
+  .triforce-cursor {
+    cursor: url('/assets/triforce-icon.png') 16 16, auto;
+  }
+
+  section > div:has(#skills-container) {
+    @apply 
+      sm-max:w-[90%] sm:w-[80%] lg:w-[70%] 2xl:w-[60%];
+  }
+}  

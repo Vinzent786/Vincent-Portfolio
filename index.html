@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A portfolio highlighting my experience and a brief introduction to who I am.">
+    <meta name="keywords" content="web developer, portfolio, front-end developer, back-end developer, React, JavaScript, PHP, web design, programming, full-stack">
+    <title>Vincent Cook - Web Developer Portfolio</title>
+    <link rel="icon" href="/assets/portfolio-icon.svg?v=1.1" type="image/svg+xml">
+    <link rel="icon" href="/assets/portfolio-icon.png?v=1.1" type="image/png">
+  </head>
+  <body>
+    <noscript>
+      <style>
+        :root {
+          --bg-color: #080d13;
+          --text-color: #faf9f6;
+          --a-color: #0188b4;
+          --a-hover-color: #57bfe2;
+        }
+
+        #root {display: none;}
+        
+        body {
+          margin: 0; 
+          padding: 0;
+          background-color: var(--bg-color);
+        }
+
+        noscript {
+          display: block;
+          width: 100vw;
+          height: 100vh;
+          height: 100dvh;
+          color: var(--text-color);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        noscript > div {
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        img { 
+          display: block;
+          margin: auto;
+        }
+
+        h1, p {margin: 0;}
+        
+        p {
+          line-height: 1.5rem;
+          font-size: 1.2rem;
+        }
+
+        a {
+          color: var(--a-color);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+          transition: color 150ms ease-in-out, text-underline-offset 150ms ease-in-out;
+        }
+
+        a:hover {
+          color: var(--a-hover-color);
+          text-decoration: underline;
+          text-underline-offset: 4px;
+        }
+      </style>
+      <div>
+        <h1>JavaScript Required</h1>
+        <p>
+          JavaScript is required to view this application.
+          <br>
+          Please enable JavaScript and then <a href="">reload</a> the page.
+        </p>
+        <img src="/assets/error-animation.gif" alt="Error Gif">
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
