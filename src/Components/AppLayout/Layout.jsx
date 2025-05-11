@@ -11,7 +11,6 @@ export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
-    const lastScrollTime = useRef(0);
 
     // Reference passed to wrapper
     // Wrapper sets current property
@@ -35,17 +34,12 @@ export default function Layout() {
 
         // Uses custom hook on wheel event 
         const handleScroll = e => {
-        const now = Date.now();
-        const timeSinceLast = now - lastScrollTime.current;
-        lastScrollTime.current = now;
 
-            // Ignore scrolls if zooming in/out,
-            // mobile screens,
-            //  or if there are rapid scroll events (touchpad input)
-            if (e.ctrlKey || timeSinceLast < 40 || window.innerWidth <= 640) return;
+        // Ignore scrolls if zooming in/out or on mobile screens
+        if (e.ctrlKey || window.innerWidth <= 640) return;
 
-            // Use custom scroll hook
-            positionInfo(contentRef.current, e);
+        // Use custom scroll hook
+        positionInfo(contentRef.current, e);
         }
         window.addEventListener('wheel', handleScroll);
 
