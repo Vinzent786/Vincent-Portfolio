@@ -1,5 +1,13 @@
+import { useState, useEffect } from "react";
+
 // The "Experience" section of page
 export default function Exp() {
+    // Used to set mounting state
+    const [, setMounted] = useState(false);
+    
+    // Helps avoid transitioning in component before it is fully mounted
+    useEffect(() => setMounted(true), []);
+
     return (
         <div id="exp-container">
             <div className="mb-8 md-max:mt-20 md-max:ml-4 min1024-max900:mb-4">
