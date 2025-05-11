@@ -33,8 +33,12 @@ export default function Layout() {
 
         // Uses custom hook on wheel event 
         const handleScroll = e => {
-            // Ignore scrolls on mobile or if zooming in/out
-            if (window.innerWidth <= 768 || e.ctrlKey) return;
+            // Ignore scrolls on mobile, zooming in/out, or if scroll came from a touch pad
+            if (
+                window.innerWidth <= 768 || 
+                e.ctrlKey ||
+                Math.abs(e.deltaY) < 50
+            ) return;
             positionInfo(contentRef.current, e);
         }
         window.addEventListener('wheel', handleScroll);
