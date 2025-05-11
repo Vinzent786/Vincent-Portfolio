@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useThemeContext } from '../../Context/ThemeContext';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import LoadingIcon from '../LoadingIcon';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -41,7 +42,6 @@ function SkillsCharts() {
     
         return () => window.removeEventListener('resize', handleScreenSize);
     }, []);
-
 
     // Returns memoized graphs based on screen size state
     const charts = useMemo(() => {
@@ -188,8 +188,18 @@ function SkillsCharts() {
     );
 }
 
+
 // The "Skills" section of page
 export default function Skills() {
+    // Used to set mounting state
+    const [mounted, setMounted] = useState(false);
+    
+    // Helps avoid transitioning in component before it is fully mounted
+    useEffect(() => setMounted(true), []);
+
+    // Return loading component if not mounted
+    if (!mounted) return (<LoadingIcon />);
+
     return (
         <div id='skills-container' className="w-full max-h-screen">
             <div className="flex flex-col gap-8 sm-max:w-[90%] sm:w-[80%] lg:w-[80%] 2xl:w-[60%] m-auto">

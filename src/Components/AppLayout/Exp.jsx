@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
+import LoadingIcon from "../LoadingIcon";
 
 // The "Experience" section of page
 export default function Exp() {
     // Used to set mounting state
-    const [, setMounted] = useState(false);
+    const [mounted, setMounted] = useState(false);
     
     // Helps avoid transitioning in component before it is fully mounted
     useEffect(() => setMounted(true), []);
+
+    // Return loading component if not mounted
+    if (!mounted) return (<LoadingIcon />);
 
     return (
         <div id="exp-container">
