@@ -9,14 +9,12 @@ function DownArrow() {
             viewBox="0 0 24 24" 
             className="
                 w-12 h-12
-                absolute
-                bottom-5
                 animate-bounce
                 motion-reduce:animate-none
                 stroke-current text-[#fff]
                 transition-all duration-200
                 hover:cursor-pointer 
-                hover:stroke-link-hover-dark
+                hover:stroke-nav-link-hover-dark
             "
         >
             <path 
