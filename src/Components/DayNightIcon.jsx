@@ -21,8 +21,10 @@ export default function DayNightIcon() {
             className={`
                 aspect-square w-10
                 absolute
-                top-2
-                right-2
+                top-5
+                sm-max:top-2
+                sm-max:right-6
+                right-10
                 z-[9999]
                 rounded-full
                 transition-all
