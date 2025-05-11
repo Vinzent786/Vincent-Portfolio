@@ -4,7 +4,6 @@ import { ThemeProvider } from "../Context/ThemeProvider.jsx";
 import LoadingIcon from "./LoadingIcon.jsx";
 import Error from "./Error.jsx";
 import Layout from "./AppLayout/Layout.jsx";
-import Test from "./AppLayout/Test.jsx";
 // Lazy imports for loading fallback
 const Home = lazy(() => import("./Home.jsx"));
 const About = lazy(() => import("./AppLayout/About.jsx"));
@@ -35,10 +34,6 @@ export default function App() {
         {
           path: 'skills',
           element: <Skills />
-        },
-        {
-          path: 'test',
-          element: <Test></Test>
         }
       ]
     },
