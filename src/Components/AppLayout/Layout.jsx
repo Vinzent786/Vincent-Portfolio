@@ -1,16 +1,17 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { primaryInput, deviceType } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.jsx";
 import Nav from "./Nav.jsx";
 import OutletWrapper from "./OutletWrapper.jsx";
 import DayNightIcon from '../DayNightIcon.jsx';
 
+// Main layout component for page. Wraps all main page components
 export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
+    const scrollData = useRef({ lastTime: 0, lastDelta: 0 });
 
     // Reference passed to wrapper
     // Wrapper sets current property
@@ -34,12 +35,23 @@ export default function Layout() {
 
         // Uses custom hook on wheel event 
         const handleScroll = e => {
-            console.log(primaryInput + ' ' + deviceType);
+            const currentTime = Date.now();
+            const delta = Math.abs(e.deltaY);
+            const timeDiff = currentTime - scrollData.current.lastTime;
+
+            // Store scroll info
+            scrollData.current.lastTime = currentTime;
+            scrollData.current.lastDelta = delta;
+
+            // trackpad detection
+            const isLikelyTrackpad = (
+                e.deltaMode === 0 && delta < 50 && timeDiff < 100
+            );
+
             // Ignore scrolls if zooming in/out or if scroll is not from a mouse
-            if (
-                e.ctrlKey ||
-                primaryInput !== 'mouse'
-            ) return;
+            if (e.ctrlKey || isLikelyTrackpad) return;
+
+            // Use custom scroll hook
             positionInfo(contentRef.current, e);
         }
         window.addEventListener('wheel', handleScroll);
