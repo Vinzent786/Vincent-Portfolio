@@ -11,7 +11,7 @@ export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
-    const scrollData = useRef({ lastTime: 0, lastDelta: 0 });
+    const lastScrollTime = useRef(0);
 
     // Reference passed to wrapper
     // Wrapper sets current property
@@ -35,23 +35,14 @@ export default function Layout() {
 
         // Uses custom hook on wheel event 
         const handleScroll = e => {
-            const currentTime = Date.now();
-            const delta = Math.abs(e.deltaY);
-            const timeDiff = currentTime - scrollData.current.lastTime;
+        const now = Date.now();
+        const timeSinceLast = now - lastScrollTime.current;
+        lastScrollTime.current = now;
 
-            // Store scroll info
-            scrollData.current.lastTime = currentTime;
-            scrollData.current.lastDelta = delta;
-
-            // trackpad detection
-            const isLikelyTrackpad = (
-                e.deltaMode === 0 && delta < 50 && timeDiff < 100
-            );
-
-            console.log(isLikelyTrackpad)
-
-            // Ignore scrolls if zooming in/out or if scroll is not from a mouse
-            if (e.ctrlKey || isLikelyTrackpad) return;
+            // Ignore scrolls if zooming in/out,
+            // mobile screens,
+            //  or if there are rapid scroll events (touchpad input)
+            if (e.ctrlKey || timeSinceLast < 40 || window.innerWidth <= 640) return;
 
             // Use custom scroll hook
             positionInfo(contentRef.current, e);
