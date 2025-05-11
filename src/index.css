@@ -192,9 +192,4 @@
   .triforce-cursor {
     cursor: url('/assets/triforce-icon.png') 16 16, auto;
   }
-
-  section > div:has(#skills-container) {
-    @apply 
-      sm-max:w-[90%] sm:w-[80%] lg:w-[70%] 2xl:w-[60%];
-  }
 }  

@@ -63,6 +63,7 @@ export default function OutletWrapper({contentRef}) {
                      font-josefinSans
                      px-7 py-6
                      max-h-screen
+                     w-full
                      box-border
                      overflow-y-auto
                      md-max:pt-24
@@ -73,7 +74,9 @@ export default function OutletWrapper({contentRef}) {
                      }
                  `}
             >
-                {prevOutlet}
+                <div className="flex justify-center items-center m-auto">
+                    {prevOutlet}
+                </div>
             </div>
         </section>
     );

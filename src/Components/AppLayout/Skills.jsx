@@ -8,7 +8,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 // Returns the JSX for the chart graphics based off screen size
 function SkillsCharts() {
     const {theme} = useThemeContext();
-    const widthBreakpoint = 1536, mobileBreakPoint = 640;
+    const widthBreakpoint = 1024, mobileBreakPoint = 640;
     const [largeScreen, setLargeScreen] = useState((window.innerWidth > widthBreakpoint));
     const
         gridLight = 'rgba(36, 36, 36, .2)',
@@ -191,14 +191,16 @@ function SkillsCharts() {
 // The "Skills" section of page
 export default function Skills() {
     return (
-        <div id='skills-container' className="flex flex-col gap-8">
-            <div>
-                <h1>Languages</h1>
-                <p className="text-text-secondary-light dark:text-text-secondary-dark">
-                    Here is a graphical representation of languages that I know.
-                </p>
+        <div id='skills-container' className="w-full max-h-screen">
+            <div className="flex flex-col gap-8 sm-max:w-[90%] sm:w-[80%] lg:w-[80%] 2xl:w-[60%] m-auto">
+                <div>
+                    <h1>Languages</h1>
+                    <p className="text-text-secondary-light dark:text-text-secondary-dark">
+                        Here is a graphical representation of languages that I know.
+                    </p>
+                </div>
+                <SkillsCharts />
             </div>
-            <SkillsCharts />
         </div>
     );
 }

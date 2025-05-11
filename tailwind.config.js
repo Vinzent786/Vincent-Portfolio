@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
@@ -83,5 +85,9 @@ export default {
       }
     },
   },
-  plugins: [],
-}
+  plugins: [
+    plugin(function({ addVariant }) {
+      addVariant('min1024-max900', '@media (min-width: 1024px) and (max-height: 900px)')
+    })
+  ],
+};

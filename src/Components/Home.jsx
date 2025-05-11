@@ -1,6 +1,7 @@
 import { NavLink, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+// Down arrow svg used in navlink to go to next section of page
 function DownArrow() {
     return (
         <svg 
@@ -27,12 +28,20 @@ function DownArrow() {
     );
 }
 
+// Root route of web page
 export default function Home() {
+    // Used to handle navigating to next section of page via scrolling
     const [scrollDown, setScrollDown] = useState(false);
 
     useEffect(() => {
         const handleScroll = (e) => {
-            if (e.deltaY <= 0) return;
+            // Ignore scroll up, mobile scroll, zooming, and touch pad scrolling
+            if (
+                e.deltaY <= 0 ||
+                window.innerWidth <= 768 || 
+                e.ctrlKey ||
+                Math.abs(e.deltaY) < 50
+            ) return;
 
             setScrollDown(true);
         }

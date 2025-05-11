@@ -1,7 +1,7 @@
 // The "About Me" section of page
 export default function About() {
     return (
-        <>
+        <div id="about-container">
             <h1 className="">About Me</h1>
             <br />
             <p className="max-w-[50rem]">
@@ -22,6 +22,6 @@ export default function About() {
                 In my free time, I enjoy spending time with my pet cats, cooking, walking on trails, and trying to learn German.
                 I also am a big fan of <a href="https://www.nintendo.com/" target="_blank" className="animate-link ">Nintendo games</a>, with a special affinity for <a href="https://zelda.nintendo.com/" target="_blank" className="animate-link  triforce-cursor">the Legend of Zelda</a> series.
             </p>
-        </>
+        </div>
     );
 }

@@ -1,18 +1,18 @@
 // The "Experience" section of page
 export default function Exp() {
     return (
-        <>
-            <div className="mb-8 md-max:mt-20 md-max:ml-4">
+        <div id="exp-container">
+            <div className="mb-8 md-max:mt-20 md-max:ml-4 min1024-max900:mb-4">
                 <h1>Experience</h1>
                 <p className="text-text-secondary-light dark:text-text-secondary-dark">
                     {(window.innerWidth > 640) ? 'Hover' : 'Tap'} to reveal
                 </p>
             </div>
             <div id="exp-container" 
-                 className="
+                className="
                     grid 
-                    gap-y-10 auto-rows-fr grid-cols-1
-                    xl:grid-rows-2 xl:grid-cols-2 xl:gap-x-8
+                    gap-y-6 auto-rows-fr grid-cols-1
+                    xl:grid-rows-2 xl:grid-cols-2 xl:gap-x-6
                     xl:justify-center
                     text-text-primary-light
                     dark:text-text-primary-dark
@@ -78,6 +78,6 @@ export default function Exp() {
                     Here
                 </a>
             </p>
-        </>
+        </div>
     );
 }
