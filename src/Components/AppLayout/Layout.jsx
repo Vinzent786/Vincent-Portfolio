@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { primaryInput } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.jsx";
 import Nav from "./Nav.jsx";
@@ -33,11 +34,10 @@ export default function Layout() {
 
         // Uses custom hook on wheel event 
         const handleScroll = e => {
-            // Ignore scrolls on mobile, zooming in/out, or if scroll came from a touch pad
+            // Ignore scrolls if zooming in/out or if scroll is not from a mouse
             if (
-                window.innerWidth <= 768 || 
                 e.ctrlKey ||
-                Math.abs(e.deltaY) < 50
+                primaryInput !== 'mouse'
             ) return;
             positionInfo(contentRef.current, e);
         }
