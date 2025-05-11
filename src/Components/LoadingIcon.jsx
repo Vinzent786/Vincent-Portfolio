@@ -1,7 +1,7 @@
 // Provides a loading component while the page loads
 export default function LoadingIcon() {
     return (
-        <div className="absolute inset-0 flex flex-col justify-center items-center w-5/6 m-auto">
+        <div className="absolute inset-0 flex flex-col justify-center items-center bg-bg-primary-light dark:bg-bg-primary-dark">
             <p className="text-xl text-center font-anton w-full text-text-primary-light dark:text-text-primary-dark">
                 Loading            
                 <svg className="inline ml-2 w-[100px] h-[15px]" viewBox="0 0 120 20" xmlns="http://www.w3.org/2000/svg">

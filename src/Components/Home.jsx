@@ -12,10 +12,13 @@ function DownArrow() {
                 w-12 h-12
                 animate-bounce
                 motion-reduce:animate-none
-                stroke-current text-[#fff]
+                stroke-current
                 transition-all duration-200
                 hover:cursor-pointer 
-                hover:stroke-nav-link-hover-dark
+                text-text-primary-light
+                dark:text-text-primary-dark
+                hover:stroke-nav-link-hover-light
+                dark:hover:stroke-nav-link-hover-dark
             "
         >
             <path 
@@ -64,7 +67,10 @@ export default function Home() {
                     relative 
                     h-full w-full 
                     flex justify-center 
-                    bg-black bg-opacity-[.97]
+                    bg-opacity-[.96]
+                    dark:bg-opacity-[.97]
+                    bg-bg-secondary-light
+                    dark:bg-black
                 "
             >
                 <section className="
@@ -74,9 +80,9 @@ export default function Home() {
                         animate-fade-in
                     "
                 >
-                    <h1 className="text-6xl font-bold text-text-primary-dark">Vincent Cook</h1>
-                    <h2 className="text-2xl font-bold pl-2 text-text-secondary-dark">Web Developer</h2>
-                    <p className=" text-lg pl-3 text-text-secondary-dark">
+                    <h1 className="text-6xl font-bold text-text-primary-light dark:text-text-primary-dark">Vincent Cook</h1>
+                    <h2 className="text-2xl font-bold pl-2 text-text-secondary-light dark:text-text-secondary-dark">Web Developer</h2>
+                    <p className=" text-lg pl-3 text-text-secondary-light dark:text-text-secondary-dark">
                         I am a web developer with full stack experience.
                     </p>
                 </section>

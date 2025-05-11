@@ -16,7 +16,7 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home />,
+      element: <ThemeWrapper><Home /></ThemeWrapper>,
       errorElement: <Error />,
     }, 
     {
