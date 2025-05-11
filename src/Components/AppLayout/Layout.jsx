@@ -48,6 +48,8 @@ export default function Layout() {
                 e.deltaMode === 0 && delta < 50 && timeDiff < 100
             );
 
+            console.log(isLikelyTrackpad)
+
             // Ignore scrolls if zooming in/out or if scroll is not from a mouse
             if (e.ctrlKey || isLikelyTrackpad) return;
 
