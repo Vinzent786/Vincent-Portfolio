@@ -9,7 +9,6 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    /* color-scheme: light dark; */
   }
 
   #layout, #layout *:not(a) {
@@ -17,15 +16,27 @@
   }
 
   h1 {
-    @apply text-4xl font-bold text-header-light dark:text-header-dark sm-max:text-2xl;
+    @apply 
+      text-4xl font-bold 
+      text-header-light 
+      dark:text-header-dark 
+      sm-max:text-2xl;
   }
 
   h2 {
-    @apply text-2xl font-bold text-header-light dark:text-header-dark;    
+    @apply 
+      text-2xl 
+      font-bold 
+      text-header-light 
+      dark:text-header-dark;    
   }
 
   p {
-    @apply text-lg m-0 text-text-primary-light dark:text-text-primary-dark sm-max:text-sm;
+    @apply 
+      text-lg m-0 
+     text-text-primary-light 
+     dark:text-text-primary-dark 
+      sm-max:text-sm;
   }
 
   li {
@@ -35,7 +46,11 @@
 
 @layer components {
   .animate-nav-link, .animate-hover-trigger {
-    @apply relative cursor-pointer font-josefinSans text-nav-link-light dark:text-nav-link-dark;
+    @apply 
+      relative cursor-pointer 
+      font-josefinSans 
+     text-nav-link-light 
+     dark:text-nav-link-dark;
   }
 
   nav .animate-nav-link {
