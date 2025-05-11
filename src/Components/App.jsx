@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "../Context/ThemeProvider.jsx";
+import ThemeWrapper from "./ThemeWrapper.jsx";
 import LoadingIcon from "./LoadingIcon.jsx";
 import Error from "./Error.jsx";
 import Layout from "./AppLayout/Layout.jsx";
@@ -39,15 +40,17 @@ export default function App() {
     },
     {
       path: '/error',
-      element: <Error />
+      element: <ThemeWrapper><Error /></ThemeWrapper>
     }
   ]);
 
   return (
-    <Suspense fallback={<LoadingIcon />}>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </Suspense>
+    <ThemeProvider>
+      <ThemeWrapper>
+        <Suspense fallback={<LoadingIcon />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </ThemeWrapper>
+    </ThemeProvider>
   );
 }
