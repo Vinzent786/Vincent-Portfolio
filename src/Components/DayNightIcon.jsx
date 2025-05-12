@@ -8,9 +8,9 @@ export default function DayNightIcon() {
     const {theme, setTheme} = useThemeContext();
     const changeIcon = useRef(null);
 
+    // Handles setting the theme
     const handleClick = () => {
         if (!changeIcon.current) return;
-
         setTheme((theme === 'dark') ? 'light' : 'dark');
     }
 

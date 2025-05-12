@@ -11,8 +11,8 @@ const About = lazy(() => import("./AppLayout/About.jsx"));
 const Exp = lazy(() => import("./AppLayout/Exp.jsx"));
 const Skills = lazy(() => import("./AppLayout/Skills.jsx"));
 
-export default function App() {
-  // Client side routing
+  // Client side router
+  // Handles what to render based on path, and provides an error component on errors
   const router = createBrowserRouter([
     {
       path: '/',
@@ -44,6 +44,13 @@ export default function App() {
     }
   ]);
 
+
+// Main application component that:
+// - Redners the client side router
+// - Wraps routes with the theme provider,
+// - Wraps routes with the theme wrapper (used for components outside of main path),
+// - Wraps routes in the suspense provider (to render fallback UI while lazy loading components render)
+export default function App() {
   return (
     <ThemeProvider>
       <ThemeWrapper>

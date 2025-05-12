@@ -44,11 +44,11 @@ export default function Layout() {
 
             // Handles deciding to use scroll based navigation
             const handleScroll = e => {
-                // Should not used scroll based naviation if -
-                // zooming in/out,
-                // on mobile devices (They should use nav bar),
-                // last location change was too recent,
-                // or there was small scroll inertia (likely from lifting fingers off a touch pad)
+                // Should not used scroll based naviation if:
+                //  - Zooming in/out
+                //  - On mobile devices (They should use nav bar)
+                //  - Last location change was too recent
+                //  - There was small scroll inertia (likely from lifting fingers off a touch pad)
                 if (
                     e.ctrlKey
                     || primaryInput !== 'mouse'
