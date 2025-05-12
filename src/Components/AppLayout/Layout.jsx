@@ -36,7 +36,7 @@ export default function Layout() {
             const now = performance.now();
 
             // Ignore scrolls if zooming in/out, on mobile screens, or if likely using track pad
-            if (e.ctrlKey || primaryInput !== 'mouse' || ((now - lastScroll.current) < 60)) {
+            if (e.ctrlKey || primaryInput !== 'mouse' || ((now - lastScroll.current) < 200)) {
                 console.log('returning');
                  return;
             } else {
