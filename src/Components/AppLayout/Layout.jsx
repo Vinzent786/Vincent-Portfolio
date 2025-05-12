@@ -12,6 +12,7 @@ export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
+    // Used for determining how fast scroll based navigation can occur
     const locationChangeNow = useRef(performance.now());
     // Reference passed to wrapper. Wrapper sets current property 
     const contentRef = useRef({
@@ -41,13 +42,21 @@ export default function Layout() {
 
             if (!section || !div) return;
 
+            // Handles deciding to use scroll based navigation
             const handleScroll = e => {
-                if (e.ctrlKey || primaryInput !== 'mouse') return;
-                // console.log(Math.abs(e.deltaY))
+                // Should not used scroll based naviation if -
+                // zooming in/out,
+                // on mobile devices (They should use nav bar),
+                // last location change was too recent,
+                // or there was small scroll inertia (likely from lifting fingers off a touch pad)
                 if (
-                    performance.now() - locationChangeNow.current < 300
+                    e.ctrlKey
+                    || primaryInput !== 'mouse'
+                    || performance.now() - locationChangeNow.current < 300
                     || Math.abs(e.deltaY) < 10
                 ) return;
+
+                // Uses scroll based navigation hook
                 positionInfo(div, e, locationChangeNow.current);
             };
 
