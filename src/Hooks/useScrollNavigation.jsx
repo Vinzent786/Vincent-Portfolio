@@ -24,8 +24,6 @@ function useScrollNavigation() {
         // No navigation until component is either at top or bottom of page
         if (!contentPosition.atTop && !contentPosition.atBottom) return;
 
-        scrollEvent.preventDefault();
-
         // Navigation logic
         switch (currentLocation) {
             case 'about':

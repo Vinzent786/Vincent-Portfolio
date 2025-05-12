@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { primaryInput } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.jsx";
 import Nav from "./Nav.jsx";
@@ -11,10 +12,8 @@ export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
-
-    // Reference passed to wrapper
-    // Wrapper sets current property
-    const contentRef = useRef(null);
+    const lastScroll = useRef(0); // Used to track last wheel event
+    const contentRef = useRef(null); // Reference passed to wrapper. Wrapper sets current property
 
     // Custom hook for scroll navigation, returns a callback function that performs the logic
     // Callback takes in current page component and wheel event
@@ -34,14 +33,17 @@ export default function Layout() {
 
         // Uses custom hook on wheel event 
         const handleScroll = e => {
+            const now = performance.now();
 
-        // Ignore scrolls if zooming in/out or on mobile screens
-        if (e.ctrlKey || window.innerWidth <= 640) return;
+            // Ignore scrolls if zooming in/out, on mobile screens, or if likely using track pad
+            if (e.ctrlKey || primaryInput !== 'mouse' || ((now - lastScroll.current) < 60)) return;
 
-        // Use custom scroll hook
-        positionInfo(contentRef.current, e);
+            lastScroll.current = now;
+
+            // Use custom scroll hook
+            positionInfo(contentRef.current, e);
         }
-        window.addEventListener('wheel', handleScroll, { passive: false });
+        window.addEventListener('wheel', handleScroll);
 
         return () => window.removeEventListener('wheel', handleScroll);
     }, [positionInfo, contentRef]);
