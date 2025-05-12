@@ -41,6 +41,7 @@ export default function Layout() {
                  return;
             } else {
                 console.log(now - lastScroll.current);
+            }
 
             lastScroll.current = now;
 
