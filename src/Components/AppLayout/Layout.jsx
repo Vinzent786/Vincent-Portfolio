@@ -41,7 +41,7 @@ export default function Layout() {
         // Use custom scroll hook
         positionInfo(contentRef.current, e);
         }
-        window.addEventListener('wheel', handleScroll);
+        window.addEventListener('wheel', handleScroll, { passive: false });
 
         return () => window.removeEventListener('wheel', handleScroll);
     }, [positionInfo, contentRef]);
