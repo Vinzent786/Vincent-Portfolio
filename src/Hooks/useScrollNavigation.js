@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useCallback, useRef } from "react";
+import { useCallback } from "react";
 
 // Custom hook for handling scroll based navigation
 function useScrollNavigation() {
     const navigate = useNavigate();
 
     // Memoized function that hook returns to perform scroll based navigation logic
-    const scrollNavigation = useCallback((content, scrollEvent, now) => {
+    const scrollNavigation = useCallback((content, scrollEvent) => {
         if (!content) return;
         
         // Destructures component ref into position information for the component in page
@@ -62,11 +62,6 @@ function useScrollNavigation() {
                 navigate('/error');
                 break;
         }
-
-        // Re-enable scroll and reset cooldown
-        setTimeout(() => {
-            scrollCoolDown.current = false;
-        }, 400);
     }, [navigate]);
 
     return scrollNavigation;

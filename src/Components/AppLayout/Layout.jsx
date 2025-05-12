@@ -45,7 +45,7 @@ export default function Layout() {
                 if (e.ctrlKey || primaryInput !== 'mouse') return;
                 // console.log(Math.abs(e.deltaY))
                 if (
-                    performance.now() - locationChangeNow.current < 500
+                    performance.now() - locationChangeNow.current < 300
                     || Math.abs(e.deltaY) < 10
                 ) return;
                 positionInfo(div, e, locationChangeNow.current);
