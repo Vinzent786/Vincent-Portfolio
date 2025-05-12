@@ -5,8 +5,8 @@ import ThemeWrapper from "./ThemeWrapper.jsx";
 import LoadingIcon from "./LoadingIcon.jsx";
 import Error from "./Error.jsx";
 import Layout from "./AppLayout/Layout.jsx";
+import Home from "./Home.jsx";
 // Lazy imports for loading fallback
-const Home = lazy(() => import("./Home.jsx"));
 const About = lazy(() => import("./AppLayout/About.jsx"));
 const Exp = lazy(() => import("./AppLayout/Exp.jsx"));
 const Skills = lazy(() => import("./AppLayout/Skills.jsx"));
