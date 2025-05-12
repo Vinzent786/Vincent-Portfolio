@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ThemeContext } from "./ThemeContext";
 import PropTypes from "prop-types";
 
+// Provides theme context to children components
 function ThemeProvider({ children }) {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
@@ -20,6 +21,7 @@ function ThemeProvider({ children }) {
     );
 }
 
+// Prop validation
 ThemeProvider.propTypes = {
     children: PropTypes.node.isRequired
 };

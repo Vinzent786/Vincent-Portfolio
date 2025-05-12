@@ -14,7 +14,7 @@ export default function Layout() {
     const {theme} = useThemeContext();
     // Used for determining how fast scroll based navigation can occur
     const locationChangeNow = useRef(performance.now());
-    // Reference passed to wrapper. Wrapper sets current property 
+    // Reference passed to wrapper. Wrapper sets current properties
     const contentRef = useRef({
         section: null,
         div: null
@@ -57,7 +57,7 @@ export default function Layout() {
                 ) return;
 
                 // Uses scroll based navigation hook
-                positionInfo(div, e, locationChangeNow.current);
+                positionInfo(div, e);
             };
 
             section.addEventListener('wheel', handleScroll, { passive: false });

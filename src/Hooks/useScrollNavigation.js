@@ -26,8 +26,6 @@ function useScrollNavigation() {
         const currentLocation = location.pathname.split('/')[2];
         switch (currentLocation) {
             case 'about':
-                // if (now - lastScroll.current < 50) return;
-
                 if (
                     contentPosition.atTop && 
                     scrollDirection === 'up'
