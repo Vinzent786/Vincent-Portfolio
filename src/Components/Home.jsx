@@ -61,7 +61,7 @@ export default function Home() {
                     h-full w-full 
                     flex justify-center 
                     bg-opacity-[.96]
-                    dark:bg-opacity-[.97]
+                    dark:bg-opacity-[.95]
                     bg-bg-secondary-light
                     dark:bg-black
                 "
