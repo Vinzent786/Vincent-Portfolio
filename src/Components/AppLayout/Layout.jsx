@@ -12,7 +12,6 @@ export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
-    const lastScroll = useRef(0); // Used to track last wheel event
     const contentRef = useRef(null); // Reference passed to wrapper. Wrapper sets current property
 
     // Custom hook for scroll navigation, returns a callback function that performs the logic
@@ -30,27 +29,24 @@ export default function Layout() {
 
     useEffect(() => {
         if (!contentRef.current) return;
+        const content = contentRef.current;
 
         // Uses custom hook on wheel event 
         const handleScroll = e => {
-            const now = performance.now();
+            // e.preventDefault()
 
-            // Ignore scrolls if zooming in/out, on mobile screens, or if likely using track pad
-            if (e.ctrlKey || primaryInput !== 'mouse' || ((now - lastScroll.current) < 200)) {
-                console.log('returning');
-                 return;
-            } else {
-                console.log(now - lastScroll.current);
-            }
-
-            lastScroll.current = now;
+            // Ignore scrolls if zooming in/out or on mobile screens
+            if (e.ctrlKey || primaryInput !== 'mouse') return;
 
             // Use custom scroll hook
-            positionInfo(contentRef.current, e);
+            positionInfo(content, e);
         }
-        window.addEventListener('wheel', handleScroll);
 
-        return () => window.removeEventListener('wheel', handleScroll);
+        content.addEventListener('wheel', handleScroll, {passive: false});
+
+        return () => {
+            content.removeEventListener('wheel', handleScroll);
+        }
     }, [positionInfo, contentRef]);
 
     return (
