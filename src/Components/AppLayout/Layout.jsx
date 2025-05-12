@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { primaryInput } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
-import { useScrollNavigation } from "../../Hooks/useScrollNavigation.jsx";
+import { useScrollNavigation } from "../../Hooks/useScrollNavigation.js";
 import Nav from "./Nav.jsx";
 import OutletWrapper from "./OutletWrapper.jsx";
 import DayNightIcon from '../DayNightIcon.jsx';
@@ -12,6 +12,7 @@ export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
+    const locationChangeNow = useRef(performance.now());
     // Reference passed to wrapper. Wrapper sets current property 
     const contentRef = useRef({
         section: null,
@@ -25,6 +26,7 @@ export default function Layout() {
     // If for some reason the URL path is just "main" or "main/"", navigate to "/main/about"
     // so that a page component can render
     useEffect(() => {
+        locationChangeNow.current = performance.now();
         const pathArr = location.pathname.split('/');
         const lastPath = pathArr[pathArr.length - 1];
 
@@ -41,7 +43,12 @@ export default function Layout() {
 
             const handleScroll = e => {
                 if (e.ctrlKey || primaryInput !== 'mouse') return;
-                positionInfo(div, e);
+                // console.log(Math.abs(e.deltaY))
+                if (
+                    performance.now() - locationChangeNow.current < 500
+                    || Math.abs(e.deltaY) < 10
+                ) return;
+                positionInfo(div, e, locationChangeNow.current);
             };
 
             section.addEventListener('wheel', handleScroll, { passive: false });

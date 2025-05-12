@@ -4,11 +4,10 @@ import { useCallback, useRef } from "react";
 // Custom hook for handling scroll based navigation
 function useScrollNavigation() {
     const navigate = useNavigate();
-    const scrollCoolDown = useRef(false);
 
     // Memoized function that hook returns to perform scroll based navigation logic
-    const scrollNavigation = useCallback((content, scrollEvent) => {
-        if (!content || scrollCoolDown.current) return;
+    const scrollNavigation = useCallback((content, scrollEvent, now) => {
+        if (!content) return;
         
         // Destructures component ref into position information for the component in page
         const {scrollTop, scrollHeight, clientHeight} = content;
@@ -23,13 +22,12 @@ function useScrollNavigation() {
         // No navigation until component is either at top or bottom of page
         if (!contentPosition.atTop && !contentPosition.atBottom) return;
 
-        scrollEvent.preventDefault();
-        scrollCoolDown.current = true;
-
         // Navigation logic
         const currentLocation = location.pathname.split('/')[2];
         switch (currentLocation) {
             case 'about':
+                // if (now - lastScroll.current < 50) return;
+
                 if (
                     contentPosition.atTop && 
                     scrollDirection === 'up'
@@ -68,7 +66,7 @@ function useScrollNavigation() {
         // Re-enable scroll and reset cooldown
         setTimeout(() => {
             scrollCoolDown.current = false;
-        }, 300);
+        }, 400);
     }, [navigate]);
 
     return scrollNavigation;

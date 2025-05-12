@@ -31,29 +31,22 @@ function DownArrow() {
     );
 }
 
-// Root route of web page
+// Root route of web app
 export default function Home() {
     // Used to handle navigating to next section of page via scrolling
     const [scrollDown, setScrollDown] = useState(false);
 
     useEffect(() => {
         const handleScroll = (e) => {
-            // Ignore scroll up, mobile scroll, zooming, and touch pad scrolling
-            if (
-                e.deltaY <= 0 ||
-                window.innerWidth <= 768 || 
-                e.ctrlKey ||
-                Math.abs(e.deltaY) < 50
-            ) return;
+            // Ignore scroll up or zooming
+            if (e.deltaY <= 0 || e.ctrlKey) return;
 
             setScrollDown(true);
         }
 
         window.addEventListener('wheel', handleScroll);
 
-        return () => {
-            window.removeEventListener('wheel', handleScroll);
-        }
+        return () => window.removeEventListener('wheel', handleScroll);
     }, []);
 
     return (
@@ -82,9 +75,7 @@ export default function Home() {
                 >
                     <h1 className="text-6xl font-bold text-text-primary-light dark:text-text-primary-dark">Vincent Cook</h1>
                     <h2 className="text-2xl font-bold pl-2 text-text-secondary-light dark:text-text-secondary-dark">Web Developer</h2>
-                    <p className=" text-lg pl-3 text-text-secondary-light dark:text-text-secondary-dark">
-                        I am a web developer with full stack experience.
-                    </p>
+                    <p className=" text-lg pl-3 text-text-secondary-light dark:text-text-secondary-dark">I am a web developer with full stack experience.</p>
                 </section>
                 <NavLink to={'/main/about'} className={"absolute bottom-0 animate-fade-in"}>
                     <DownArrow />
