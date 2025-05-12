@@ -31,13 +31,11 @@ export default function Layout() {
         if (!lastPath || lastPath === 'main') navigate('/main/about');
     }, [location, navigate]);
 
-
+    // Handles attatching wheel event function to section element
     useEffect(() => {
             const 
                 section = contentRef.current.section,
                 div = contentRef.current.div;
-
-            console.log(`${section} : ${div}`)
 
             if (!section || !div) return;
 
