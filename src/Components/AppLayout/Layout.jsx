@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { primaryInput } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.jsx";
@@ -32,10 +32,12 @@ export default function Layout() {
     }, [location, navigate]);
 
 
-    useLayoutEffect(() => {
+    useEffect(() => {
             const 
                 section = contentRef.current.section,
                 div = contentRef.current.div;
+
+            console.log(`${section} : ${div}`)
 
             if (!section || !div) return;
 
