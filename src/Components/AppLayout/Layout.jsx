@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { primaryInput } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.jsx";
@@ -12,7 +12,11 @@ export default function Layout() {
     const location = useLocation();
     const navigate = useNavigate();
     const {theme} = useThemeContext();
-    const contentRef = useRef(null); // Reference passed to wrapper. Wrapper sets current property
+    // Reference passed to wrapper. Wrapper sets current property 
+    const contentRef = useRef({
+        section: null,
+        div: null
+    });
 
     // Custom hook for scroll navigation, returns a callback function that performs the logic
     // Callback takes in current page component and wheel event
@@ -27,26 +31,22 @@ export default function Layout() {
         if (!lastPath || lastPath === 'main') navigate('/main/about');
     }, [location, navigate]);
 
-    useEffect(() => {
-        if (!contentRef.current) return;
-        const content = contentRef.current;
 
-        // Uses custom hook on wheel event 
-        const handleScroll = e => {
-            // e.preventDefault()
+    useLayoutEffect(() => {
+            const 
+                section = contentRef.current.section,
+                div = contentRef.current.div;
 
-            // Ignore scrolls if zooming in/out or on mobile screens
-            if (e.ctrlKey || primaryInput !== 'mouse') return;
+            if (!section || !div) return;
 
-            // Use custom scroll hook
-            positionInfo(content, e);
-        }
+            const handleScroll = e => {
+                if (e.ctrlKey || primaryInput !== 'mouse') return;
+                positionInfo(div, e);
+            };
 
-        content.addEventListener('wheel', handleScroll, {passive: false});
+            section.addEventListener('wheel', handleScroll, { passive: false });
 
-        return () => {
-            content.removeEventListener('wheel', handleScroll);
-        }
+            return () => section.removeEventListener('wheel', handleScroll);
     }, [positionInfo, contentRef]);
 
     return (

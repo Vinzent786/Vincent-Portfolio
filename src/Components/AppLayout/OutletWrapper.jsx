@@ -1,5 +1,5 @@
 import { useLocation, useOutlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 
 // Wrapper component that handles animating transitions between page components
@@ -18,6 +18,16 @@ export default function OutletWrapper({contentRef}) {
     const [transitionOut, setTransitionOut] = useState(false);
     // Fading keyframes' duration in ms
     const fadeDuration = 150;
+    // Used for updating the contentRef prop
+    const sectionRef = useRef(null), divRef = useRef(null);
+
+    // Updates contentRef
+    useEffect(() => {
+        if (!sectionRef.current || !divRef.current) return;
+
+        contentRef.current.section = sectionRef.current;
+        contentRef.current.div = divRef.current;
+    }, [contentRef, sectionRef, divRef]);
 
 
     // Handles updating states when the URL changes
@@ -51,14 +61,15 @@ export default function OutletWrapper({contentRef}) {
     }, [contentRef, prevLocation]);
 
     return (
-        <section className="
-            h-full
-            w-full
-            flex
-            items-center
-            justify-center
+        <section ref={sectionRef}
+            className="
+                h-full
+                w-full
+                flex
+                items-center
+                justify-center
         ">
-            <div ref={contentRef} 
+            <div ref={divRef} 
                  className={`
                      font-josefinSans
                      px-7 py-6

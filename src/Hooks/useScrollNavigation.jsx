@@ -68,7 +68,7 @@ function useScrollNavigation() {
         // Re-enable scroll and reset cooldown
         setTimeout(() => {
             scrollCoolDown.current = false;
-        }, 500);
+        }, 300);
     }, [navigate]);
 
     return scrollNavigation;
