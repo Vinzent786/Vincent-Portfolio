@@ -73,6 +73,7 @@ export default function Layout() {
                 overflow-x-hidden 
                 mx-autoW
                 h-screen
+                h-[100dvh]
                 dark:bg-bg-primary-dark
             ">
                 <Nav />

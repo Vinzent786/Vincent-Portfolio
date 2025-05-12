@@ -58,7 +58,7 @@ export default function Home() {
         >
             <div className="
                     relative 
-                    h-full w-full 
+                    h-full h-[100dvh] w-full 
                     flex justify-center 
                     bg-opacity-[.96]
                     dark:bg-opacity-[.94]
