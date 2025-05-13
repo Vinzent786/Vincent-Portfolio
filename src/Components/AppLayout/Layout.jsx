@@ -14,6 +14,8 @@ export default function Layout() {
     const {theme} = useThemeContext();
     // Used for determining how fast scroll based navigation can occur
     const locationChangeNow = useRef(performance.now());
+    // Used in handleScroll to to help prevent accidental scrolling into next component
+    const lastScrollTime = useRef(0);
     // Reference passed to wrapper. Wrapper sets current properties
     const contentRef = useRef({
         section: null,
@@ -44,6 +46,15 @@ export default function Layout() {
 
             // Handles deciding to use scroll based navigation
             const handleScroll = e => {
+                // Helps prevent track pads accidently scrolling to next component when scrolling an overflow component
+                if (
+                    div.scrollHeight > div.clientHeight
+                    && div.scrollTop + div.clientHeight >= div.scrollHeight
+                    && performance.now() - lastScrollTime.current < 100
+                ) return;
+
+                lastScrollTime.current = performance.now();
+
                 // Should not used scroll based naviation if:
                 //  - Zooming in/out
                 //  - On mobile devices (They should use nav bar)
