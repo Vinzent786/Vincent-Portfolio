@@ -52,8 +52,7 @@ export default function Nav() {
                 animate-fade-in
                 md-max:border-0 md-max:border-b-2
                 md-max:h-fit md-max:w-full
-                md-max:absolute md-max:top-0
-                md-max:z-[1000]
+                
         ">
             <nav ref={navRef} 
                  className="

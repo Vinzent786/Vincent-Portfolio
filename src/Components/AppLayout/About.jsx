@@ -1,7 +1,7 @@
 // The "About Me" section of page
 export default function About() {
     return (
-        <div id="about-container">
+        <div id="about-container" className="m-auto w-fit">
             <h1 className="">About Me</h1>
             <br />
             <p className="max-w-[50rem]">

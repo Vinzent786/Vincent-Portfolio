@@ -120,7 +120,7 @@
   }
 
   div:has(#exp-container) {
-    @apply sm-max:p-0;
+    @apply sm-max:px-0;
   }
 
   #exp-container article {

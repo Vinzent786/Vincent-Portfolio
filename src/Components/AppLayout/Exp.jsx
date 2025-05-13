@@ -13,8 +13,8 @@ export default function Exp() {
     if (!mounted) return (<LoadingIcon />);
 
     return (
-        <div id="exp-container">
-            <div className="mb-8 md-max:mt-20 md-max:ml-4 min1024-max900:mb-4">
+        <div id="exp-container" className="flex flex-col gap-4 w-fit m-auto">
+            <div>
                 <h1>Experience</h1>
                 <p className="text-text-secondary-light dark:text-text-secondary-dark">
                     {(window.innerWidth > 640) ? 'Hover' : 'Tap'} to reveal
@@ -84,12 +84,20 @@ export default function Exp() {
                     </ul>
                 </article>
             </div>
-            <p className="mt-8 text-text-secondary-light dark:text-text-secondary-dark">
-                View my full resume&nbsp;
-                <a className="animate-link" href="/assets/Vincent Cook Resume.pdf" target="_blank">
-                    Here
-                </a>
-            </p>
+            <div className="text-text-secondary-light dark:text-text-secondary-dark flex flex-col gap-2">
+                <p>
+                    View my full resume&nbsp;
+                    <a className="animate-link" href="/assets/Vincent Cook Resume.pdf" target="_blank">
+                        Here
+                    </a>.
+                </p>
+                <p>
+                    View the code for this portfolio&nbsp;
+                    <a className="animate-link" href="https://github.com/Vinzent786/Vincent-Portfolio" target="_blank">
+                        Here
+                    </a>.
+                </p>
+            </div>
         </div>
     );
 }

@@ -63,21 +63,25 @@ export default function OutletWrapper({contentRef}) {
     return (
         <section ref={sectionRef}
             className="
-                h-full
+                flex-1
                 w-full
                 flex
                 items-center
                 justify-center
+                overflow-hidden
+                p-4
         ">
             <div ref={divRef} 
                  className={`
                      font-josefinSans
-                     px-7 py-6
-                     max-h-screen
                      w-full
+                     h-full
+                     flex-grow
+                     flex
+                     justify-center
+                     items-center
                      box-border
                      overflow-y-auto
-                     md-max:pt-24
                      ${
                          (transitionOut) 
                              ? 'animate-fade-out-right motion-reduce:animate-fade-out-reduce' 
@@ -85,8 +89,10 @@ export default function OutletWrapper({contentRef}) {
                      }
                  `}
             >
-                <div className="flex justify-center items-center m-auto">
-                    {prevOutlet}
+                <div className="flex justify-center items-center w-full h-full">
+                    <div className="flex-grow w-full h-full place-content-center">
+                        {prevOutlet}
+                    </div>
                 </div>
             </div>
         </section>
