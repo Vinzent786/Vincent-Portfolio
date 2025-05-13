@@ -163,15 +163,15 @@
   }
 
   #exp-container article:first-of-type > div {
-    @apply bg-[url('/assets/front-end-dev.png')];
+    @apply bg-[url('/assets/front-end-dev.webp')];
   }
 
   #exp-container article:nth-of-type(2) > div {
-    @apply bg-[url('/assets/back-end-dev.png')];
+    @apply bg-[url('/assets/back-end-dev.webp')];
   }
 
   #exp-container article:nth-of-type(3) > div {
-    @apply bg-[url('/assets/system-admin.png')];
+    @apply bg-[url('/assets/system-admin.webp')];
   }
 
   #exp-container h2 {
