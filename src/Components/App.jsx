@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { ThemeProvider } from "../Context/ThemeProvider.jsx";
-import { usePreloadImages } from "../Hooks/usePreloadImages.js";
+import { usePreloadImages } from "../Hooks/usePreloadImages.js"
+import { inject } from "@vercel/analytics";
 import ThemeWrapper from "./ThemeWrapper.jsx";
 import LoadingIcon from "./LoadingIcon.jsx";
 import Error from "./Error.jsx";
@@ -61,6 +62,9 @@ export default function App() {
     '/assets/system-admin.webp',
     '/assets/triforce-icon.png'
    ]);
+
+   // used for Vercel analytics
+   useEffect(() => inject(), []);
 
   return (
     <ThemeProvider>
