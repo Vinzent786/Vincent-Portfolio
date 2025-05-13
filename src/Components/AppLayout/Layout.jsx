@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { detectPrimaryInput  } from "detect-it";
+import { primaryInput  } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.js";
 import Nav from "./Nav.jsx";
@@ -51,7 +51,7 @@ export default function Layout() {
                 //  - There was small scroll inertia (likely from lifting fingers off a touch pad)
                 if (
                     e.ctrlKey
-                    || detectPrimaryInput() !== 'mouse'
+                    || primaryInput !== 'mouse'
                     || performance.now() - locationChangeNow.current < 300
                     || Math.abs(e.deltaY) < 10
                 ) return;
