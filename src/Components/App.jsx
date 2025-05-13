@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "../Context/ThemeProvider.jsx";
-import { usePreloadImages } from "../Hooks/usePreLoadImages.js";
+import { usePreloadImages } from "../Hooks/usePreloadImages.js";
 import ThemeWrapper from "./ThemeWrapper.jsx";
 import LoadingIcon from "./LoadingIcon.jsx";
 import Error from "./Error.jsx";
