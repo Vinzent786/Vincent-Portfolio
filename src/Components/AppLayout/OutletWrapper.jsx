@@ -69,7 +69,8 @@ export default function OutletWrapper({contentRef}) {
                 items-center
                 justify-center
                 overflow-hidden
-                p-4
+                px-8 py-4
+                sm-max:p-4
         ">
             <div ref={divRef} 
                  className={`
