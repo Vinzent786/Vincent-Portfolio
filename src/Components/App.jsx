@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "../Context/ThemeProvider.jsx";
+import { usePreloadImages } from "../Hooks/usePreLoadImages.js";
 import ThemeWrapper from "./ThemeWrapper.jsx";
 import LoadingIcon from "./LoadingIcon.jsx";
 import Error from "./Error.jsx";
@@ -51,6 +52,12 @@ const Skills = lazy(() => import("./AppLayout/Skills.jsx"));
 // - Wraps routes with the theme wrapper (used for components outside of main path),
 // - Wraps routes in the suspense provider (to render fallback UI while lazy loading components render)
 export default function App() {
+  // Preloads the background image for home route and theme switcher
+  usePreloadImages([
+    '/assets/code-cover.webp',
+    '/assets/DayNightIcon.svg'
+   ]);
+
   return (
     <ThemeProvider>
       <ThemeWrapper>
