@@ -48,7 +48,7 @@ const Skills = lazy(() => import("./AppLayout/Skills.jsx"));
 
 
 // Main application component that:
-// - Redners the client side router
+// - Renders the client side router
 // - Wraps routes with the theme provider,
 // - Wraps routes with the theme wrapper (used for components outside of main path),
 // - Wraps routes in the suspense provider (to render fallback UI while lazy loading components render)
