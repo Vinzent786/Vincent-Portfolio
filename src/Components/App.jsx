@@ -52,13 +52,14 @@ const Skills = lazy(() => import("./AppLayout/Skills.jsx"));
 // - Wraps routes with the theme wrapper (used for components outside of main path),
 // - Wraps routes in the suspense provider (to render fallback UI while lazy loading components render)
 export default function App() {
-  // Preloads the background image for home route, theme switcher, and exp component
+  // Preloads images for components
   usePreloadImages([
     '/assets/code-cover.webp',
     '/assets/DayNightIcon.svg',
     '/assets/front-end-dev.webp',
     '/assets/back-end-dev.webp',
-    '/assets/system-admin.webp'
+    '/assets/system-admin.webp',
+    '/assets/triforce-icon.png'
    ]);
 
   return (
