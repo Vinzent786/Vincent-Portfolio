@@ -36,6 +36,16 @@ export default function Layout() {
         if (!lastPath || lastPath === 'main') navigate('/main/about');
     }, [location, navigate]);
 
+    // Resets scroll position to top of component that loaded in
+    useEffect(() => {
+        // Animation frame to make sure the new layout has already been calculated
+        requestAnimationFrame(() => {
+            const div = contentRef.current.div;
+            if (!div) return;
+            div.scrollTop = 0;
+        });
+    }, [location.pathname]);
+
     // Handles attatching wheel event function to section element
     useEffect(() => {
             const 

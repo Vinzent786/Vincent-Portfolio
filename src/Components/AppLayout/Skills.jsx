@@ -201,7 +201,7 @@ export default function Skills() {
     if (!mounted) return (<LoadingIcon />);
 
     return (
-        <div id='skills-container' className='h-full w-full place-content-center'>
+        <div id='skills-container' className='h-full w-full my-auto px-8 sm-max:p-4 place-content-center'>
             <div className='m-auto sm-max:w-[90%] sm:w-[80%] lg:w-[80%] 2xl:w-[60%]'>
                 <div className="flex flex-col gap-8 m-auto">
                     <div>

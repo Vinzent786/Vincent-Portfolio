@@ -69,8 +69,7 @@ export default function OutletWrapper({contentRef}) {
                 items-center
                 justify-center
                 overflow-hidden
-                px-8 py-4
-                sm-max:p-4
+                py-4
         ">
             <div ref={divRef} 
                  className={`
@@ -90,11 +89,7 @@ export default function OutletWrapper({contentRef}) {
                      }
                  `}
             >
-                <div className="flex justify-center items-center w-full h-full">
-                    <div className="flex-grow w-full h-full place-content-center">
-                        {prevOutlet}
-                    </div>
-                </div>
+                {prevOutlet}
             </div>
         </section>
     );

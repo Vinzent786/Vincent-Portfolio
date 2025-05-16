@@ -119,10 +119,6 @@
     @apply left-0;
   }
 
-  div:has(#exp-container) {
-    @apply sm-max:px-0;
-  }
-
   #exp-container article {
     @apply 
       relative
