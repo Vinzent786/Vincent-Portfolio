@@ -46,7 +46,6 @@ const router = createBrowserRouter([
   }
 ]);
 
-
 // Main application component that:
 // - Renders the client side router
 // - Wraps routes with the theme provider,
