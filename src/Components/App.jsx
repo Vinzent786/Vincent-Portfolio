@@ -13,38 +13,38 @@ const About = lazy(() => import("./AppLayout/About.jsx"));
 const Exp = lazy(() => import("./AppLayout/Exp.jsx"));
 const Skills = lazy(() => import("./AppLayout/Skills.jsx"));
 
-  // Client side router
-  // Handles what to render based on path, and provides an error component on errors
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <ThemeWrapper><Home /></ThemeWrapper>,
-      errorElement: <Error />,
-    }, 
-    {
-      path: '/main',
-      element: <Layout />,
-      errorElement: <Error />,
-      children: [
-        {
-          path: 'about',
-          element: <About />
-        },
-        {
-          path: 'exp',
-          element: <Exp />
-        },
-        {
-          path: 'skills',
-          element: <Skills />
-        }
-      ]
-    },
-    {
-      path: '/error',
-      element: <ThemeWrapper><Error /></ThemeWrapper>
-    }
-  ]);
+// Client side router
+// Handles what to render based on path, and provides an error component on errors
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <ThemeWrapper><Home /></ThemeWrapper>,
+    errorElement: <Error />,
+  }, 
+  {
+    path: '/main',
+    element: <Layout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: 'about',
+        element: <About />
+      },
+      {
+        path: 'exp',
+        element: <Exp />
+      },
+      {
+        path: 'skills',
+        element: <Skills />
+      }
+    ]
+  },
+  {
+    path: '/error',
+    element: <ThemeWrapper><Error /></ThemeWrapper>
+  }
+]);
 
 
 // Main application component that:
