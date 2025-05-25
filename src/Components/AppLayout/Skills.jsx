@@ -50,8 +50,8 @@ function SkillsCharts() {
             const 
                 frontEndLabels = ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
                 frontEndData = [100, 100, 100, 100, 75],
-                backEndLabels = ['PHP', 'Java', 'SQL', 'PL/SQL', 'C++', 'Python', 'Node.js'],
-                backEndData = [100, 75, 75, 25, 50, 75, 100];
+                backEndLabels = ['PHP', 'Java', 'SQL', 'Lua', 'C++', 'Python', 'Node.js'],
+                backEndData = [100, 75, 75, 50, 50, 75, 100];
 
 
             switch (type) {
