@@ -5,11 +5,11 @@ import { useCallback } from "react";
 function useScrollNavigation() {
     const navigate = useNavigate();
 
-    // Memoized function that hook returns to perform scroll based navigation logic
+    // Memoized function that the hook returns to perform scroll based navigation logic
     const scrollNavigation = useCallback((content, scrollEvent) => {
         if (!content) return;
         
-        // Destructures component ref into position information for the component in page
+        // Destructs component ref into position information for the component in page
         const {scrollTop, scrollHeight, clientHeight} = content;
         // Whether the page was scrolled up or down
         const scrollDirection = (scrollEvent.deltaY > 0) ? 'down' : 'up';

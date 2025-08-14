@@ -1,7 +1,7 @@
 import { NavLink, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-// Down arrow svg used in navlink to go to next section of page
+// Down arrow svg used in navLink to go to next section of page
 function DownArrow() {
     return (
         <svg 

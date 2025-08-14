@@ -26,7 +26,7 @@ function SkillsCharts() {
         dataSet2BorderDark = 'rgb(54, 162, 235)';
 
 
-    // Attatches resize event listener for handeling screen size state
+    // Attaches resize event listener for handling screen size state
     useEffect(() => {
         const handleScreenSize = () => {
             const isLargeScreen = window.innerWidth > widthBreakpoint;
@@ -137,7 +137,7 @@ function SkillsCharts() {
                                 case 75:
                                     return handleTickText('Comfortable')
                                 case 50:
-                                    return handleTickText('Knowledable');
+                                    return handleTickText('Knowledgeable');
                                 case 25:
                                     return handleTickText('Used');
                                 default:
