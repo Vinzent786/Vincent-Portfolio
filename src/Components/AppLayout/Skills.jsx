@@ -50,8 +50,8 @@ function SkillsCharts() {
             const 
                 frontEndLabels = ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
                 frontEndData = [100, 100, 100, 100, 75],
-                backEndLabels = ['PHP', 'Java', 'SQL', 'Lua', 'C++', 'Python', 'Node.js'],
-                backEndData = [100, 75, 75, 50, 50, 75, 100];
+                backEndLabels = ['PHP', 'Next.js', 'TypeScript', 'Java', 'SQL', 'Lua', 'C++', 'Python', 'Node.js'],
+                backEndData = [100, 100, 100, 75, 100, 50, 25, 75, 100];
 
 
             switch (type) {
@@ -207,7 +207,7 @@ export default function Skills() {
                     <div>
                         <h1>Languages</h1>
                         <p className="text-text-secondary-light dark:text-text-secondary-dark">
-                            Here is a graphical representation of languages that I know.
+                            Here is a graphical representation of some of the technologies that I know.
                         </p>
                     </div>
                     <SkillsCharts />

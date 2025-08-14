@@ -58,6 +58,7 @@ export default function Exp() {
                             justify-between
                         ">
                             <li>Extensive experience with PHP for server-side logic and RESTful APIs.</li>
+                            <li>Next.js with TypeScript for building full-stack web applications.</li>
                             <li>Node.js for server-side development.</li>
                             <li>Relational database management using SQL.</li>
                             <li>Integration of third-party APIs for complex functionalities.</li>
