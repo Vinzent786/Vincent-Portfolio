@@ -4,8 +4,17 @@ import PropTypes from "prop-types";
 
 // Provides theme context to children components
 function ThemeProvider({ children }) {
-    // Tries to retrieve theme from local storage, if not found it defaults to dark theme
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+    // Tries to retrieve theme from local storage
+    // If not found it defaults to browser preference
+    const [theme, setTheme] = useState(() => {
+        const storageTheme = localStorage.getItem('theme');
+        if (storageTheme) return storageTheme;
+
+        return (
+            window.matchMedia 
+            && window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) ? 'dark' : 'light';
+    });
 
     // Sets theme in local storage
     useEffect(() => {
