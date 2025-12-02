@@ -49,9 +49,9 @@ function SkillsCharts() {
         const generateGraph = (type) => {
             const 
                 frontEndLabels = ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
-                frontEndData = [100, 100, 100, 100, 75],
-                backEndLabels = ['PHP', 'Next.js', 'TypeScript', 'Java', 'SQL', 'Lua', 'C++', 'Python', 'Node.js'],
-                backEndData = [100, 100, 100, 75, 100, 50, 25, 75, 100];
+                frontEndData = [100, 100, 100, 100, 100],
+                backEndLabels = ['PHP', 'Next.js', 'TypeScript', 'Java', 'SQL', 'Lua', 'C++', 'C#', 'Python', 'Node.js'],
+                backEndData = [100, 100, 100, 75, 100, 50, 25, 75, 75, 100];
 
 
             switch (type) {
