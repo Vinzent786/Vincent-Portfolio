@@ -220,7 +220,7 @@ function SkillsCharts() {
                 { chartGraph: generateGraph(chartData.chartTypes.frontEnd), chartOptions: options },
                 { chartGraph: generateGraph(chartData.chartTypes.backEnd), chartOptions: options }
             ];
-    }, [chartData, largeScreen, theme]);
+    }, [chartData, largeScreen, useLightColors]);
 
     return (
         <>
