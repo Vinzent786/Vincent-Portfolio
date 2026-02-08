@@ -14,7 +14,7 @@ export default function OutletWrapper({contentRef}) {
     const newLocation  = useLocation();
     // Tracks prev location for checking if next location is different from prev location
     const [prevLocation, setPrevLocation] = useState(newLocation);
-    // Controlls the state for the fade out animation
+    // Controls the state for the fade out animation
     const [transitionOut, setTransitionOut] = useState(false);
     // Fading keyframes' duration in ms
     const fadeDuration = 150;

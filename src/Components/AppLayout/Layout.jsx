@@ -46,7 +46,7 @@ export default function Layout() {
         });
     }, [location.pathname]);
 
-    // Handles attatching wheel event function to section element
+    // Handles attaching wheel event function to section element
     useEffect(() => {
             const 
                 section = contentRef.current.section,
@@ -56,7 +56,7 @@ export default function Layout() {
 
             // Handles deciding to use scroll based navigation
             const handleScroll = e => {
-                // Helps prevent track pads accidently scrolling to next component when scrolling an overflow component
+                // Helps prevent track pads accidentally scrolling to next component when scrolling an overflow component
                 if (
                     div.scrollHeight > div.clientHeight
                     && div.scrollTop + div.clientHeight >= div.scrollHeight
@@ -65,7 +65,7 @@ export default function Layout() {
 
                 lastScrollTime.current = performance.now();
 
-                // Should not used scroll based naviation if:
+                // Should not used scroll based navigation if:
                 //  - Zooming in/out
                 //  - On mobile devices (They should use nav bar)
                 //  - Last location change was too recent
