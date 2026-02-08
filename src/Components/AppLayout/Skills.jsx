@@ -11,20 +11,67 @@ function SkillsCharts() {
     const {theme} = useThemeContext();
     const widthBreakpoint = 1024, mobileBreakPoint = 640;
     const [largeScreen, setLargeScreen] = useState((window.innerWidth > widthBreakpoint));
-    const
-        gridLight = 'rgba(36, 36, 36, .2)',
-        tickLight = 'rgb(36, 36, 36)',
-        dataSet1Light = 'rgba(255, 99, 132, 0.8)',
-        dataSet1BorderLight = 'rgb(255, 97, 107)',
-        dataSet2Light = 'rgba(54, 162, 235, 0.8)',
-        dataSet2BorderLight = 'rgb(54, 162, 235)',
-        gridDark = 'rgba(185, 185, 185, .2)',
-        tickDark = 'rgb(185, 185, 185)',
-        dataSet1Dark = 'rgba(255, 99, 132, 0.4)',
-        dataSet1BorderDark = 'rgb(255, 99, 132)',
-        dataSet2Dark = 'rgba(54, 162, 235, 0.4)',
-        dataSet2BorderDark = 'rgb(54, 162, 235)';
-
+    const useLightColors = theme === 'light';
+    
+    // Data used for setting up the charts
+    const chartData = useMemo(() => (
+        {
+            labels: {
+                frontEnd: 'Front-End',
+                backEnd: 'Back-End'
+            },
+            ticks: {
+                proficient: 'Proficient',
+                comfortable: 'Comfortable',
+                knowledgeable: 'Knowledgeable',
+                used: 'Used'
+            },
+            chartTypes: {
+                frontEnd: 'frontEnd',
+                backEnd: 'backEnd',
+                combined: 'combined'
+            },
+            colors: {
+                lightMode: {
+                    grid: 'rgba(36, 36, 36, .2)',
+                    tick: 'rgb(36, 36, 36)',
+                    dataSet1: 'rgba(255, 99, 132, 0.8)',
+                    dataSet1Border: 'rgb(255, 97, 107)',
+                    dataSet2: 'rgba(54, 162, 235, 0.8)',
+                    dataSet2Border: 'rgb(54, 162, 235)'
+                },
+                darkMode: {
+                    grid: 'rgba(185, 185, 185, .2)',
+                    tick: 'rgb(185, 185, 185)',
+                    dataSet1: 'rgba(255, 99, 132, 0.4)',
+                    dataSet1Border: 'rgb(255, 99, 132)',
+                    dataSet2: 'rgba(54, 162, 235, 0.4)',
+                    dataSet2Border: 'rgb(54, 162, 235)'
+                }
+            },
+            languages: {
+                frontEnd: [
+                    {'React': 100},
+                    {'JavaScript': 100},
+                    {'HTML5': 100},
+                    {'CSS3': 100},
+                    {'Tailwind CSS': 100}
+                ],
+                backEnd: [
+                    {'PHP': 100},
+                    {'Next.js': 100},
+                    {'TypeScript': 100},
+                    {'Java': 75},
+                    {'SQL': 100},
+                    {'Lua': 50},
+                    {'C++': 50},
+                    {'C#': 100},
+                    {'Python': 75},
+                    {'Node.js': 100}
+                ]
+            }
+        }
+    ), []);
 
     // Attaches resize event listener for handling screen size state
     useEffect(() => {
@@ -47,56 +94,71 @@ function SkillsCharts() {
     const charts = useMemo(() => {
         // Generates graph object based off of type
         const generateGraph = (type) => {
-            const 
-                frontEndLabels = ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
-                frontEndData = [100, 100, 100, 100, 100],
-                backEndLabels = ['PHP', 'Next.js', 'TypeScript', 'Java', 'SQL', 'Lua', 'C++', 'C#', 'Python', 'Node.js'],
-                backEndData = [100, 100, 100, 75, 100, 50, 25, 75, 75, 100];
+            const frontEndLabels = chartData.languages.frontEnd.map(skill => Object.keys(skill)[0]);
+            const frontEndData = chartData.languages.frontEnd.map(skill => Object.values(skill)[0]);
 
+            const backEndLabels = chartData.languages.backEnd.map(skill => Object.keys(skill)[0]);
+            const backEndData = chartData.languages.backEnd.map(skill => Object.values(skill)[0]);
 
+            const dataSet1Bg = useLightColors 
+                                ? chartData.colors.lightMode.dataSet1
+                                : chartData.colors.darkMode.dataSet1;
+            
+            const dataSet1Border = useLightColors 
+                                    ? chartData.colors.lightMode.dataSet1Border 
+                                    : chartData.colors.darkMode.dataSet1Border;
+
+            const dataSet2Bg = useLightColors 
+                                ? chartData.colors.lightMode.dataSet2
+                                : chartData.colors.darkMode.dataSet2;
+
+            const dataSet2Border = useLightColors 
+                                    ? chartData.colors.lightMode.dataSet2Border 
+                                    : chartData.colors.darkMode.dataSet2Border;
+                                    
             switch (type) {
-                case 'frontEnd':
+                case chartData.chartTypes.frontEnd:
                     return {
                         labels: frontEndLabels,
                         datasets: [
                             {
-                                label: 'Front-End',
+                                label: chartData.labels.frontEnd,
                                 data: frontEndData,
-                                backgroundColor: [(theme === 'light') ? dataSet1Light : dataSet1Dark],
-                                borderColor: [(theme === 'light') ? dataSet1BorderLight : dataSet1BorderDark],
+                                backgroundColor: [dataSet1Bg],
+                                borderColor: [dataSet1Border],
                                 borderWidth: 1
                             }
                         ]
                     };
-                case 'backEnd':
+                case chartData.chartTypes.backEnd:
                     return {
                         labels: backEndLabels,
                         datasets: [
                             {
-                                label: 'Back-End',
+                                label: chartData.labels.backEnd,
                                 data: backEndData,
-                                backgroundColor: [(theme === 'light') ? dataSet2Light : dataSet2Dark],
-                                borderColor: [(theme === 'light') ? dataSet2BorderLight : dataSet2BorderDark],
+                                backgroundColor: [dataSet2Bg],
+                                borderColor: [dataSet2Border],
                                 borderWidth: 1
                             }
                         ]
                     };
-                case 'combined':
+                case chartData.chartTypes.combined:
                     return {
                         labels: [...frontEndLabels, ...backEndLabels],
                         datasets: [
                             {
-                                label: 'Front-End',
+                                label: chartData.labels.frontEnd,
                                 data: [...frontEndData, ...backEndData.map(() => 0)],
-                                backgroundColor: [(theme === 'light') ? dataSet1Light : dataSet1Dark],
-                                borderColor: [(theme === 'light') ? dataSet1BorderLight : dataSet1BorderDark],
+                                backgroundColor: [dataSet1Bg],
+                                borderColor: [dataSet1Border],
                                 borderWidth: 1
                             },
                             {
-                                label: 'Back-End',
+                                label: chartData.labels.backEnd,
                                 data: [...frontEndData.map(() => 0), ...backEndData],
-                                backgroundColor: [(theme === 'light') ? dataSet2Light : dataSet2Dark],
-                                borderColor: [(theme === 'light') ? dataSet2BorderLight : dataSet2BorderDark],
+                                backgroundColor: [dataSet2Bg],
+                                borderColor: [dataSet2Border],
                                 borderWidth: 1
                             }
                         ]
@@ -117,29 +179,29 @@ function SkillsCharts() {
             maintainAspectRatio: true,
             plugins: {
                 legend: {
-                    labels: {color: (theme === 'light') ? tickLight : tickDark}
+                    labels: {color: useLightColors ? chartData.colors.lightMode.tick : chartData.colors.darkMode.tick}
                 }
             },
             scales: {
                 x: {
-                    grid: {color: (theme === 'light') ? gridLight : gridDark},
-                    ticks: {color: (theme === 'light') ? tickLight : tickDark},
+                    grid: {color: useLightColors ? chartData.colors.lightMode.grid : chartData.colors.darkMode.grid},
+                    ticks: {color: useLightColors ? chartData.colors.lightMode.tick : chartData.colors.darkMode.tick},
                     barPercentage: 1
                 },
                 y: {
-                    grid: {color: (theme === 'light') ? gridLight : gridDark},
+                    grid: {color: useLightColors ? chartData.colors.lightMode.grid : chartData.colors.darkMode.grid},
                     ticks: {
-                        color: (theme === 'light') ? tickLight : tickDark,
+                        color: useLightColors ? chartData.colors.lightMode.tick : chartData.colors.darkMode.tick,
                         callback: function(val) {
                             switch (val) {
                                 case 100:
-                                    return handleTickText('Proficient');
+                                    return handleTickText(chartData.ticks.proficient);
                                 case 75:
-                                    return handleTickText('Comfortable')
+                                    return handleTickText(chartData.ticks.comfortable)
                                 case 50:
-                                    return handleTickText('Knowledgeable');
+                                    return handleTickText(chartData.ticks.knowledgeable);
                                 case 25:
-                                    return handleTickText('Used');
+                                    return handleTickText(chartData.ticks.used);
                                 default:
                                     return '';
                             }
@@ -153,12 +215,12 @@ function SkillsCharts() {
         };
 
         return (largeScreen)
-            ? [{ chartGraph: generateGraph('combined'), chartOptions: options }]
+            ? [{ chartGraph: generateGraph(chartData.chartTypes.combined), chartOptions: options }]
             : [
-                { chartGraph: generateGraph('frontEnd'), chartOptions: options },
-                { chartGraph: generateGraph('backEnd'), chartOptions: options }
+                { chartGraph: generateGraph(chartData.chartTypes.frontEnd), chartOptions: options },
+                { chartGraph: generateGraph(chartData.chartTypes.backEnd), chartOptions: options }
             ];
-    }, [largeScreen, theme]);
+    }, [chartData, largeScreen, useLightColors]);
 
     return (
         <>
@@ -214,7 +276,7 @@ export default function Skills() {
                 </div>
             </div>
         </div>
-);
+    );
 }
 
 // sm-max:w-[90%] sm:w-[80%] lg:w-[80%] 2xl:w-[60%]
