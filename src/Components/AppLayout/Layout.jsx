@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { primaryInput  } from "detect-it";
+// import { primaryInput  } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.js";
 import Nav from "./Nav.jsx";
@@ -65,17 +65,19 @@ export default function Layout() {
 
                 lastScrollTime.current = performance.now();
 
+                /********** DISABLING MOST SCROLL BASED NAVIGATION TEMPORARILY **********/
+
                 // Should not used scroll based navigation if:
                 //  - Zooming in/out
                 //  - On mobile devices (They should use nav bar)
                 //  - Last location change was too recent
                 //  - There was small scroll inertia (likely from lifting fingers off a touch pad)
-                if (
-                    e.ctrlKey
-                    || primaryInput !== 'mouse'
-                    || performance.now() - locationChangeNow.current < 300
-                    || Math.abs(e.deltaY) < 10
-                ) return;
+                // if (
+                //     e.ctrlKey
+                //     || primaryInput !== 'mouse'
+                //     || performance.now() - locationChangeNow.current < 300
+                //     || Math.abs(e.deltaY) < 10
+                // ) return;
 
                 // Uses scroll based navigation hook
                 positionInfo(div, e);
