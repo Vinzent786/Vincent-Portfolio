@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 
+/********** DISABLING MOST SCROLL BASED NAVIGATION TEMPORARILY **********/
+
 // Custom hook for handling scroll based navigation
 function useScrollNavigation() {
     const navigate = useNavigate();
@@ -31,29 +33,29 @@ function useScrollNavigation() {
                     scrollDirection === 'up'
                 ) navigate('/');
 
-                if (
-                    contentPosition.atBottom && 
-                    scrollDirection === 'down'
-                ) navigate('/main/exp');
+                // if (
+                //     contentPosition.atBottom && 
+                //     scrollDirection === 'down'
+                // ) navigate('/main/exp');
 
                 break;
             case 'exp':
-                if (
-                    contentPosition.atTop && 
-                    scrollDirection === 'up'
-                ) navigate('/main/about');
+                // if (
+                //     contentPosition.atTop && 
+                //     scrollDirection === 'up'
+                // ) navigate('/main/about');
 
-                if (
-                    contentPosition.atBottom && 
-                    scrollDirection === 'down'
-                ) navigate('/main/skills');
+                // if (
+                //     contentPosition.atBottom && 
+                //     scrollDirection === 'down'
+                // ) navigate('/main/skills');
 
                 break;
             case 'skills':
-                if (
-                    contentPosition.atTop && 
-                    scrollDirection === 'up'
-                ) navigate('/main/exp');
+                // if (
+                //     contentPosition.atTop && 
+                //     scrollDirection === 'up'
+                // ) navigate('/main/exp');
 
                 break;
             default:

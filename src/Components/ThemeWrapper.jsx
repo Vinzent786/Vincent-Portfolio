@@ -1,7 +1,7 @@
 import { useThemeContext } from '../Context/ThemeContext';
 import PropTypes from "prop-types";
 
-// Provides theme for compoents outside of layout, such as <Error /> and <LoadingIcon />
+// Provides theme for components outside of layout, such as <Error /> and <LoadingIcon />
 export default function ThemeWrapper({ children }) {
     const {theme} = useThemeContext();
 

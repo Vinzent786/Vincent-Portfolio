@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { primaryInput  } from "detect-it";
+// import { primaryInput  } from "detect-it";
 import { useThemeContext } from "../../Context/ThemeContext.js";
 import { useScrollNavigation } from "../../Hooks/useScrollNavigation.js";
 import Nav from "./Nav.jsx";
@@ -46,7 +46,7 @@ export default function Layout() {
         });
     }, [location.pathname]);
 
-    // Handles attatching wheel event function to section element
+    // Handles attaching wheel event function to section element
     useEffect(() => {
             const 
                 section = contentRef.current.section,
@@ -56,7 +56,7 @@ export default function Layout() {
 
             // Handles deciding to use scroll based navigation
             const handleScroll = e => {
-                // Helps prevent track pads accidently scrolling to next component when scrolling an overflow component
+                // Helps prevent track pads accidentally scrolling to next component when scrolling an overflow component
                 if (
                     div.scrollHeight > div.clientHeight
                     && div.scrollTop + div.clientHeight >= div.scrollHeight
@@ -65,17 +65,19 @@ export default function Layout() {
 
                 lastScrollTime.current = performance.now();
 
-                // Should not used scroll based naviation if:
+                /********** DISABLING MOST SCROLL BASED NAVIGATION TEMPORARILY **********/
+
+                // Should not used scroll based navigation if:
                 //  - Zooming in/out
                 //  - On mobile devices (They should use nav bar)
                 //  - Last location change was too recent
                 //  - There was small scroll inertia (likely from lifting fingers off a touch pad)
-                if (
-                    e.ctrlKey
-                    || primaryInput !== 'mouse'
-                    || performance.now() - locationChangeNow.current < 300
-                    || Math.abs(e.deltaY) < 10
-                ) return;
+                // if (
+                //     e.ctrlKey
+                //     || primaryInput !== 'mouse'
+                //     || performance.now() - locationChangeNow.current < 300
+                //     || Math.abs(e.deltaY) < 10
+                // ) return;
 
                 // Uses scroll based navigation hook
                 positionInfo(div, e);
