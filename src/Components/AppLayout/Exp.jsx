@@ -63,7 +63,7 @@ export default function Exp() {
                             <li>Relational database management using SQL.</li>
                             <li>Integration of third-party APIs for complex functionalities.</li>
                             <li>End-to-end development from design to production.</li>
-                            <li>Successfully deployed multiple internal projects.</li>
+                            <li>Successfully deployed multiple internal and public-facing projects.</li>
                             <li>Vite for web-bundling.</li>
                         </ul>
                     </article>
@@ -89,7 +89,7 @@ export default function Exp() {
                 <div className="text-text-secondary-light dark:text-text-secondary-dark flex flex-col gap-2">
                     <p>
                         View my full resume&nbsp;
-                        <a className="animate-link" href="/assets/Vincent Cook Resume.pdf" target="_blank">
+                        <a className="animate-link" href="/assets/Vincent_Cook_Resume.pdf" target="_blank">
                             Here
                         </a>.
                     </p>

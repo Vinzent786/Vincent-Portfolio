@@ -7,7 +7,7 @@ export default function About() {
                 <br />
                 <p className="max-w-[50rem]">
                     I am a dedicated and detail-oriented full-stack web developer. I am currently employed for <a href="https://ysu.edu/" target="_blank" className="animate-link ">Youngstown State University</a>, where I have a strong passion for problem-solving and creating high-quality web applications. 
-                    With my experience in technologies like PHP, JavaScript, React, and CSS, I bring a versatile skill set in building and maintaining web solutions. 
+                    With my experience in technologies like PHP, SQL, JavaScript, React, and CSS, I bring a versatile skill set in building and maintaining web solutions and APIs. 
                     My journey has allowed me to work across various roles, from managing network operations to full-stack programming, refining my technical skills.
                     <br />
                     <br />
@@ -21,7 +21,8 @@ export default function About() {
                 <p className="max-w-[50rem]">
                     I am in  my late 20&apos;s and live in Youngstown, Ohio.
                     In my free time, I enjoy spending time with my pet cats, cooking, walking on trails, and trying to learn German.
-                    I also am a big fan of <a href="https://www.nintendo.com/" target="_blank" className="animate-link ">Nintendo games</a>, with a special affinity for <a href="https://zelda.nintendo.com/" target="_blank" className="animate-link  triforce-cursor">the Legend of Zelda</a> series.
+                    I also am a big fan of <a href="https://www.nintendo.com/" target="_blank" className="animate-link ">Nintendo games</a>, with a special affinity for <a href="https://zelda.nintendo.com/" target="_blank" className="animate-link  triforce-cursor">the Legend of Zelda</a> series.&nbsp;
+                    I also enjoy developing my own games with C# in <a href="https://unity.com/" target="_blank" className="animate-link">Unity</a>.
                 </p>
             </div>
             </div>
