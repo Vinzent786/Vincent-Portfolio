@@ -64,6 +64,10 @@ export default function Exp() {
                             <li>Extend ERP systems to fit business needs.</li>
                             <li>End-to-end development from design to production.</li>
                             <li>Successfully deployed multiple internal and public-facing projects.</li>
+                            <li>
+                                Utilizing ERP and SaaS solutions such as Ellucian Banner, Ellucian
+                                Experience, and Data Connect to support data integration.
+                            </li> 
                         </ul>
                     </article>
                     <article>
@@ -82,10 +86,6 @@ export default function Exp() {
                             <li>Experience in IPv4 Subnetting.</li>
                             <li>Securing Cisco hardware with SSH access and user role management.</li>
                             <li>Set up VLANs, DHCP pools, and switch configurations for LAN environments.</li>
-                            <li>
-                                Utilizing ERP and SaaS solutions such as Ellucian Banner, Ellucian
-                                Experience, and Data Connect to support data integration.
-                            </li> 
                         </ul>
                     </article>
                 </div>
