@@ -11,7 +11,7 @@ export default function About() {
                     My journey has allowed me to work across various roles, from managing network operations to full-stack programming, refining my technical skills.
                     <br />
                     <br />
-                    Currently pursuing a degree in Information Technology at <a href="https://ysu.edu/" target="_blank" className="animate-link ">Youngstown State University</a>,
+                    Graduated with a Bachelor of Science in Applied Science with a major in Information Technology at <a href="https://ysu.edu/" target="_blank" className="animate-link ">Youngstown State University</a>,
                     I am committed to continuous learning and staying at the forefront of the ever-changing tech industry. 
                     My goal is to deliver impactful, user-focused web applications.
                 </p>
